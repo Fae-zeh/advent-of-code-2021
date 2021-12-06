@@ -1,0 +1,35 @@
+import os
+os.chdir(r"H:\advent of code 2021")
+
+
+file = open('3.txt', 'r')
+
+line = file.read().splitlines()
+g=[]
+e=[]
+
+for i in range(0,len(line[0])):
+               g.append("0")
+for i in range(0,len(line[0])):
+               e.append("0")
+
+
+for i in range(len(line[0])):
+    zero = 0
+    one = 0
+    for j in range(len(line)):
+        if line[j][i] == '0':
+            zero += 1
+        elif line[j][i] =='1':
+            one += 1
+    if zero > one:
+        g[i] = '0'
+        e[i] = '1'
+    else:
+        g[i] ='1'
+        e[i] = '0'
+ 
+str_g = int(''.join(g),2)
+str_e = int(''.join(e),2)
+
+print(str_g * str_e)
