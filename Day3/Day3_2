@@ -1,0 +1,72 @@
+import os
+os.chdir(r"file dir")
+
+
+file = open('file name', 'r')
+
+line = file.read().splitlines()
+
+line2 = line.copy()
+
+for i in range(len(line[0])):
+    zero = 0
+    one = 0
+    for j in range(len(line)):
+        if line[j][i] == '1':
+            one +=1
+        elif line[j][i] == '0':
+            zero += 1
+        
+    if zero > one:
+        o2 = '0'
+    elif one > zero:
+        o2 = '1'
+    else:
+         o2 = '1'
+    
+    if len(line)>1:
+        nextL = []
+        for j in range(len(line)):
+            if line[j][i] == o2:
+                nextL.append(line[j])
+        
+        line = nextL
+        
+    zero = 0
+    one = 0
+    
+    for j in range(len(line2)):
+        if line2[j][i] == '1':
+            one +=1
+        elif line2[j][i] == '0':
+            zero += 1
+        
+    
+    if zero > one:
+        co2 = '1'
+    elif one > zero:
+        co2 = '0'
+    else:
+        co2 = '0'
+        
+    if len(line2)>1:
+        nextL2 = []
+        for j in range(len(line2)):
+            if line2[j][i] == co2:
+                nextL2.append(line2[j])
+        
+        line2 = nextL2
+  
+o2_rate = (int(line[0],2))
+
+print(o2_rate)    
+  
+    
+co2_rate = (int(line2[0],2))
+
+print(co2_rate)    
+
+life_support_rating = o2_rate * co2_rate
+
+print(life_support_rating)
+    
